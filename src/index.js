@@ -38,7 +38,13 @@ const MORSE_TABLE = {
 };
 
 function decode(expr) {
-    // write your solution here
+    let morseArray = expr.split().map(item => item.match(/.{1,10}/g)).flat();
+    let morseCode = morseArray.map(item => item.replace(/00/g, '').replace(/10/g, '.').replace(/11/g, '-'));
+    let answer = morseCode.map(item => MORSE_TABLE[item] === undefined ? ' ' : MORSE_TABLE[item]);
+   
+    return answer.join('');
+  
+ 
 }
 
 module.exports = {
